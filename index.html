@@ -7,19 +7,16 @@
         body{text-align:center;margin-top:80px;font-size:18px;}
         #getBtn{padding:15px 40px;font-size:20px;cursor:pointer;background:#2c5282;color:#fff;border:none;border-radius:8px;}
         #result{margin-top:30px;font-size:28px;font-weight:bold;color:#d9251d;}
-        #tip{margin-top:15px;color:#666;font-size:16px;}
     </style>
 </head>
 <body>
     <h3>合同4位编号生成器</h3>
     <button id="getBtn">点击获取合同编号</button>
     <div id="result"></div>
-    <div id="tip"></div>
 
     <script>
         const btn = document.getElementById('getBtn');
         const res = document.getElementById('result');
-        const tip = document.getElementById('tip');
         const min = 1000;
         const max = 9999;
 
@@ -48,8 +45,7 @@
             const used = store.usedNums;
             // 判断当月编号是否用尽
             if(used.length >= max - min + 1){
-                res.innerText = "";
-                tip.innerText = "本月所有编号已用完，下月自动重置！";
+                res.innerText = "本月所有编号已用完，下月自动重置！";
                 return;
             }
 
@@ -64,7 +60,6 @@
             localStorage.setItem('monthlyNumData', JSON.stringify(store));
 
             res.innerText = "本次编号：" + num;
-            tip.innerText = `当前月份：${currentYM} | 本月已用编号：${used.length}`;
         }
     </script>
 </body>
